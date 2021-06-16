@@ -1,3 +1,5 @@
+## ООП (OOP)
+
 <details>
 <summary>
 Что такое инкапсуляция, полиморфизм и наследование? What is encapsulation, polymorphism and inheritance?
@@ -213,6 +215,8 @@ What are the SOLID principles and what problem does each of them solve?
 `
 </details>
 
+## Функциональное программирование
+
 <details>
 <summary>
 Можно ли в js работать без классов и объектов? 
@@ -305,16 +309,14 @@ function cachingDecorator(func) {
 
 ```javascript
 // Функция высшего порядка
-function sumWrapper(a: number, func(f: number) => number)
-{
+function sumWrapper(a: number, func(f: number) => number) {
     return (b: number): number => func(a + b);
 }
 ```
 
 ```javascript
 // можем хранить состояние через замыкание
-function sumWrapper(a: number)
-{
+function sumWrapper(a: number) {
     return (b: number): number => a + b;
 }
 
@@ -337,6 +339,8 @@ const instance = function getInstance(count: number) {
     }
 }
 ```
+
+## C#
 
 <details>
 <summary>
@@ -548,6 +552,54 @@ What is the need override keyword for?
 
 <details>
 <summary>
+Чем override отличается от new?
+How does the override keyword differ from the new keyword?
+</summary>
+
+`
+new скрывает метод родительского класса, поэтому при восходящем приведении будет вызвана версия метода родительского класса.
+`
+
+```C#
+class A
+{
+    public virtual void Show()
+    {
+        Console.WriteLine("class A");
+    }
+
+    public virtual void OverrideShow()
+    {
+        Console.WriteLine("override class A");
+    }
+}
+
+class B : A
+{
+    new public void Show()
+    {
+        Console.WriteLine("class B");
+    }
+
+    public override void OverrideShow()
+    {
+        Console.WriteLine("override class B");
+    }
+}
+
+....
+
+new B().Show(); // class B
+new B().OverrideShow() // override class B
+
+A b = new B();
+b.Show(); // class A
+b.OverrideShow(); // override class B
+```
+</details>
+
+<details>
+<summary>
 Какие проблемы решают коллекции?
 What problems do collections solve?
 </summary>
@@ -622,6 +674,31 @@ var list = new List<int>();
 // компилятор будет ругаться на тип. отличный от int
 // упакоки значения не рпоизойдет
 list.Add(453);
+```
+</details>
+
+<details>
+<summary>
+Что такое явная реализация интерфейса? What is an explicit interface implementation?
+</summary>
+
+`
+Это реализация интерфейса так, что реализуемые члены класса будут доступны только при восходящем приведении. При этом модификаторы доступа к реализуемому явно члену класса не применимы.
+`
+
+```C#
+interface IInterface
+{
+    void Show();
+}
+
+class B : IInterface
+{
+    void IInterface.Show()
+    {
+        Console.WriteLine("class B");
+    }
+}
 ```
 </details>
 
@@ -966,6 +1043,18 @@ What are exceptions for?
 
 <details>
 <summary>
+Что такое анонимные типы? Как работают и для чего нужны?
+What are anonymous types? How work and what are they used for?
+</summary>
+
+`
+`
+</details>
+
+## CLR
+
+<details>
+<summary>
 Расскажите про GAC.
 Tell us about the GAC.
 </summary>
@@ -1046,16 +1135,8 @@ box/unbox - упаковка/распаковка.
 constrained говорит о том, что вызовется call метод для значимого типа без упаковки, если метод структуры был переопределён.
 `
 </details>
-
-<details>
-<summary>
-Что такое анонимные типы? Как работают и для чего нужны?
-What are anonymous types? How work and what are they used for?
-</summary>
-
-`
-`
-</details>
+	
+## Алгоритмы и структуры данных
 
 <details>
 <summary>
