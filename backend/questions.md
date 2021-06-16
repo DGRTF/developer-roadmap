@@ -1,5 +1,4 @@
-<ul>
-<li><details>
+<details>
 <summary>
 Что такое инкапсуляция, полиморфизм и наследование? What is encapsulation, polymorphism and inheritance?
 </summary>
@@ -9,10 +8,10 @@
 Полиморфизм - это свойство, которое позволяет одно и то же имя использовать для решения двух или более схожих, но технически разных задач.
 Наследование - это процесс, посредством которого один объект может приобретать свойства другого.
 `
-</details></li>
+</details>
 
 
-<li><details>
+<details>
 <summary>
 Какие виды полиморфизма вы знаете?
 What types of polymorphism do you know?
@@ -23,10 +22,10 @@ Ad-hoc-полиморфизм(перегрузки).
 Параметрический полиморфизм (обобщения).
 Полиморфизм подтипов (наследование).
 `
-</details></li>
+</details>
 
 
-<li><details>
+<details>
 <summary>
 Что такое полиморфизм подтипов? What is polymorphism subtypes?
 </summary>
@@ -34,10 +33,10 @@ Ad-hoc-полиморфизм(перегрузки).
 `
 Полиморфизм подтипов (полиморфизм) — свойство системы, позволяющее использовать объекты с одинаковым интерфейсом без информации о типе и внутренней структуре объекта.
 `
-</details></li>
+</details>
 
 
-<li><details>
+<details>
 <summary>
 Что такое ассоциация, агрегация, композиция? What is association, agregation, composition?
 </summary>
@@ -47,10 +46,10 @@ Ad-hoc-полиморфизм(перегрузки).
 Композиция определяет отношение HAS A, то есть отношение "имеет". Например, в класс автомобиля содержит объект класса электрического двигателя, при этом класс автомобиля создает объект двигателя.
 От композиции следует отличать агрегацию. Она также предполагает отношение HAS A, но реализуется она иначе(через внедрение  зависимести).
 `
-</details></li>
+</details>
 
 
-<li><details>
+<details>
 <summary>
 Что лучше применять и когда? What is better use and when?
 </summary>
@@ -58,9 +57,9 @@ Ad-hoc-полиморфизм(перегрузки).
 `
 Агрегацию, всегда, за исключением ,базовых и ненаследуемых типов.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое внедрение зависимостей? What is Dependency injection?
 </summary>
@@ -70,27 +69,26 @@ Ad-hoc-полиморфизм(перегрузки).
 когда она применяется к управлению зависимостями.
 В полном соответствии с принципом единственной обязанности объект отдаёт заботу о построении требуемых ему зависимостей внешнему, специально предназначенному для этого общему механизму.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Зачем применять интерфейсы и абстрактные классы? Why use interfaces and abstract classes?
+Чем они отличаются в C#? How do they differ in C#?
+Какое влияние оказывают на ООП в целом? What impact do they have on OOP in general?
+Как вы считаете, нужны ли они в динамически типизированных языках, почему?
+How do you think, they are needed in dynamic typing language?
 </summary>
 
 `
 Что бы агрегировать их как зависимости и вместо них подставлять любой из их подтипов, что обеспечивает переиспользуемость класса для любого из этих подтипов.
-`
-</details></li>
-
-<li><details>
-<summary>
-Чем они отличаются в C#? How do they differ in C#?
-</summary>
-
-`
 Интерфейсы имеют множественное наследование.
+Позволяют сокращать количество написания кода за счет переиспользования класса для разных подтипов агрегируемого типа.
+Нет, это было введено для ООП в статически типизированных языках, в противном случае порождалось бы много классов, потому что нельзя было бы переиспользовать старые.
 `
-</details></li>
+</details>
+
+
 
 ```C#
 interface IInterface {}
@@ -154,29 +152,9 @@ class Dog : IAnimal<Employee>
 }
 ```
 
-<li><details>
-<summary>
-Какое влияние оказывают на ООП в целом?
-What impact do they have on OOP in general?
-</summary>
 
-`
-Позволяют сокращать количество написания кода за счет переиспользования класса для разных подтипов агрегируемого типа.
-`
-</details></li>
 
-<li><details>
-<summary>
-Как вы считаете, нужны ли они в динамически типизированных языках, почему?
-How do you think, they are needed in dynamic typing language?
-</summary>
-
-`
-Нет, это было введено для ООП в статически типизированных языках, в противном случае порождалось бы много классов, потому что нельзя было бы переиспользовать старые.
-`
-</details></li>
-
-<li><details>
+<details>
 <summary>
 Можно ли с C# 8.0 заменить абстрактные классы интерфейсами? И почему?
 Is it possible whith C# 8.0 replace abstact classes whith intrfaces? Why?
@@ -206,20 +184,20 @@ public static void Main()
     ((IShow)show).Show(); // рабтает
 }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
-Зачем вообще нужны классы, если можно использовать только методы и данные статических классов C#?
+Зачем вообще нужны обычные классы, если можно использовать только методы и данные статических классов C#?
 Why do we need classes, if we can only use static classes methods and data?
 </summary>
 
 `
-Классы могут хранить состояние. В функциональных языках для этого используют замыкание.
+Классы могут хранить свое состояние для каждого экземпляра. В функциональных языках для этого используют замыкание.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое принципы SOLID и какую проблему решает каждый из них?
 What are the SOLID principles and what problem does each of them solve?
@@ -233,9 +211,9 @@ What are the SOLID principles and what problem does each of them solve?
 что бы какой-либо сущьностью переиспользовать новыцй функционал, а не изменять старый для внесения новго
 5.Принцип инверсии зависимостей. Позволяет разорвать зависимость между членами в зависимость от абстракций (интерфейсов и абстрактных классов).
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Можно ли в js работать без классов и объектов? 
 Is it possible to work in js whithout classes and objects?
@@ -246,9 +224,9 @@ If so, how?
 `
 Да, используя замыкание.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Можно ли без них хранить состояние?
 Is it possible to store the state without them?
@@ -257,19 +235,9 @@ Is it possible to store the state without them?
 `
 Да, через замыкание, котрое позволяет хранить состояние.
 `
+</details>
 
-```javascript
-function sumWrapper(a: number)
-{
-    return (b: number): number => a + b;
-}
-
-const sum = sumWrapper(4);
-const result = sum(5); // 9
-```
-</details></li>
-
-<li><details>
+<details>
 <summary>
 Что такое функции высшего порядка?
 Зачем они нужны?
@@ -279,16 +247,9 @@ What are higher-order functions?
 `
 Фнкции, которые могут принимать другие функции и возвращать функции. Для реализации замыкания и как агрегация.
 `
+</details>
 
-```javascript
-function sumWrapper(a: number, func(f: number) => number)
-{
-    return (b: number): number => func(a + b);
-}
-```
-</details></li>
-
-<li><details>
+<details>
 <summary>
 Что такое мемоизация? 
 What is memoization?
@@ -298,8 +259,34 @@ What is memoization?
 Мемоизация(иногда называют декорирование) - это кеширование внутри состояния объекта или функции(замыкание) результатов выполнения длительных операций с целью повышения производительности вычислений с одинаковыми входными данными.
 Для этого Функции или методы должны быть детерментированными. К недостаткам подхода можно отнести усложнение системы и расходование памяти.
 `
+</details>
+
+<details>
+<summary>
+Что такое каррирование?
+What is currying?
+</summary>
+
+`
+Каррирование - это процесс, в ходе которого можно вызовом одной функции вернуть другу и вызвать последнюю, что приводит к такому уоду : get(5)(4);
+В основном используется для замыканий и хранения состояния внутри функции, объекта.
+`
+</details>
+
+<details>
+<summary>
+Раньше в js не было ключевого слова private, была ли другая возможность скрыть данные внутри объекта?
+Previously, js didn't have the private keyword, was there another way to hide data inside an object?
+</summary>
+
+`
+С помощью замыкания.
+`
+</details>
+
 
 ```javascript
+// пример мемоизации
 function cachingDecorator(func) {
   let cache = new Map();
 
@@ -315,36 +302,43 @@ function cachingDecorator(func) {
   };
 }
 ```
-</details></li>
-
-<li><details>
-<summary>
-Что такое каррирование?
-What is currying?
-</summary>
-
-`
-Каррирование - это процесс, в ходе которого можно вызовом одной функции вернуть другу и вызвать последнюю, что приводит к такому уоду : get(5)(4);
-В основном используется для замыканий и хранения состояния внутри функции, объекта.
-`
 
 ```javascript
+// Функция высшего порядка
+function sumWrapper(a: number, func(f: number) => number)
+{
+    return (b: number): number => func(a + b);
+}
+```
+
+```javascript
+// можем хранить состояние через замыкание
+function sumWrapper(a: number)
+{
+    return (b: number): number => a + b;
+}
+
+const sum = sumWrapper(4);
+const result = sum(5); // 9
+```
+
+```javascript
+// пример каррирования
 const result = sumWrapper(4)(5); // 9
 ```
-</details></li>
 
-<li><details>
-<summary>
-Раньше в js не было ключевого слова private, была ли другая возможность скрыть данные внутри объекта?
-Previously, js didn't have the private keyword, was there another way to hide data inside an object?
-</summary>
+```javascript
+// делаем свойства объекта недоступными из вне
+const instance = function getInstance(count: number) {
+    return {
+        inc: () => { count++ },
+        dec: () => { count-- },
+        get: () => count,
+    }
+}
+```
 
-`
-С помощью замыкания.
-`
-</details></li>
-
-<li><details>
+<details>
 <summary>
 Какие типы данных есть в C#?
 Data types in C#?
@@ -405,9 +399,9 @@ static void A(B b)
     b.N = 10;
 }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое модификаторы доступа, зачем нужны?
 What are access modifiers, why are they needed?
@@ -439,9 +433,9 @@ class Program
 
 }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что делает оператор checked/unchecked?
 What does the checked/unchecked statment do?
@@ -460,9 +454,9 @@ checked {
 
 int b = unchecked((byte)int.Parse(Console.ReadLine()));
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Разница между свойствами и полями данных? 
 Какие есть преимущества и недостатки свойств? 
@@ -497,14 +491,12 @@ private int a; // поле данных
     public int A {get => a; set { a = value } } // свойство
 }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Чем статические классы отличаются от обычных, для чего применяются? Во что их превратит компилятор?
 How do static classes differ from regular classes, and what are they used for? What will the compiler turn them into?
-Обычные классы хранят состояние, а статические не могут, в них могут храниться только статические члены и нельзя создавать экземпляры таких классов.
-В абстрактный ненаследуемы класс в IL-коде.
 </summary>
 
 `
@@ -523,11 +515,11 @@ static void Main()
     list.Add(5);
 }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
-Для чего нужно ключевое слово override? Как переопределение влияет на версионность модулей?
+Зачем нужно ключевое слово override? Как переопределение влияет на версионность модулей?
 What is the need override keyword for?
 </summary>
 
@@ -552,9 +544,9 @@ What is the need override keyword for?
         }
 ```
 
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Какие проблемы решают коллекции?
 What problems do collections solve?
@@ -564,9 +556,9 @@ What problems do collections solve?
 Когда есть необходимость добавления элемента в массив, нужно его увеличивать, коллекции же 
 инкапсулируют в себе массив, который при достижении конца увеличивается не на одну ячейку, а более, хотя снаружи ведут себя как обычный массив.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое immutable коллекции?
 What are immutable collections?
@@ -575,9 +567,9 @@ What are immutable collections?
 `
 Это неизменяемые коллекции, при  изменении которой, создается новый объект коллекции.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Во что превратит компилятор обход коллекции через foreach?
 What will the compiler make of traversing hte collection via foreach?
@@ -586,20 +578,20 @@ What will the compiler make of traversing hte collection via foreach?
 `
 Вызов GetEnumarator(); и получение элемента энумератора через MoveNext(); В конце цикла вызывается Dispose(); энумератора.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Расскажите про обобщения.
 Tell as about the generic.
 </summary>
 
 `
-
+Обобщения позволяют работать с переменными, тип которых будет известен только во время выполнения. соблюдая при этом безопасность типов.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое ковариантность и контравариантность обобщенных типов? 
 That is covariance and contravariance generic types?
@@ -613,9 +605,9 @@ That is covariance and contravariance generic types?
 delegate TResult Func<in T, out TResult>(T arg);
 public interface IComparable<in T> { ... }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Для чего были введены обобщения?
 Why were genreric introduced?
@@ -631,9 +623,9 @@ var list = new List<int>();
 // упакоки значения не рпоизойдет
 list.Add(453);
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Сколько раз сработает статический конструктор класса A<T>?
 
@@ -647,9 +639,9 @@ var a2 = new A<int>();
 `
 2 раза, потому что создастся 2 типа.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое ограничение обобщений?
 What is the generalization constraint?
@@ -663,9 +655,9 @@ What is the generalization constraint?
 // На вход принимаются структуры
 public void Method<T>(T parameter) where T : struct
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Какую перегрузку Console.WriteLine(); метода вызовет следующий код? Это зависит от входного типа или всегда будет Console.WriteLine(object);?
 What an overload of the Console.WriteLine(); method will call the following code?
@@ -680,9 +672,9 @@ void Show<T>(T showData) {
 `
 Всегда Console.WriteLine(Object), потому что обощения не могут определять перегрузку во время выполнения.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Для чего нужен оператор typeof, если у каждого объекта и так есть метод GetType()? Для чего нужен оператор default?
 What is the typeof operator for, if every object has a GetType() method for?
@@ -691,34 +683,14 @@ What is the typeof operator for, if every object has a GetType() method for?
 `
 typeof применяется, когда нет экземпляра объекта и что бы не вызывать упаковку. default позволяет задать значение по-умолчанию, когда не известен конктретный тип(обобщения).
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое упаковка и распаковка?
 What is boxing/unboxing?
-</summary>
-
-`
-Преобразование значимого типа в ссылочный и обратно.
-`
-</details></li>
-
-<li><details>
-<summary>
 В каких случаях происходит?
 In what cases does it happen?
-</summary>
-
-`
-Упаковка возникает в двух случаях:
-- приведение к ссылочному типу
-- вызов непереопределённых наследуемых методов
-`
-</details></li>
-
-<li><details>
-<summary>
 Как влияет на производительность? 
 How does it affect performance?
 Как бороться?
@@ -726,11 +698,16 @@ How to fight?
 </summary>
 
 `
+Преобразование значимого типа в ссылочный и обратно.
+Возникает в двух случаях:
+- приведение к ссылочному типу
+- вызов непереопределённых наследуемых методов
+
 Производительность падает в несколько раз, зависит от размера структуры. Обобщениями и оперетором typeof().
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Как избежать упаковки , если вы хотите написать класс принимающий на вход  конструктора некий интерфейс interface IA, и закинуть в будущем туда структуру наследующую этот интерфейс?
 </summary>
@@ -738,9 +715,27 @@ How to fight?
 `
 Единственным способом будет создать обобщенный клас с ограничением обобщения на интерфейс IA.
 `
-</details></li>
 
-<li><details>
+```C#
+interface IA {
+    void Show();
+}
+
+struct Point {
+    public void Show() {
+        Console.WriteLine("Point");
+    }
+}
+
+class Agregate<T> where T: IA {
+    public Agregate(T a){
+        ...
+    }
+}
+```
+</details>
+
+<details>
 <summary>
 Как устроены делегаты?
 How do delegates work?
@@ -749,9 +744,9 @@ How do delegates work?
 `
 Содержит поле типа object, которое хранит экземпляр объекта или структуры вызываемого метода, или null, если вызывается статический метод.Делегаты неизменяемы.Может хранить только один метод и массив делегатов, в случачае использования цепочки вызовов.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Зачем нужны события, если есть делегаты?
 Why do we need events if there are delegates?
@@ -760,9 +755,9 @@ Why do we need events if there are delegates?
 `
 События нельзя вызвать за пределами объекта, на них можно только подписаться, так же они предоставляют два метода добавления и удаления делегата и могут нести в себе дополнительную логику, этим они похожи на свойства.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Чем отличаются лямбда-выражения от анонимных методов?
 What is difference lambda-expressions and anonymous methods?
@@ -778,9 +773,9 @@ public event EventHandler SomeEvent;
 ...
 SomeEvent += delegate { Console.WriteLine("some information") };
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое замыкания?
 What are closures?
@@ -792,9 +787,9 @@ What will a variable closure turn the compiler into?
 Это свойство ананимного метода или лямбда-выражения хранить значение внешней переменной, которое может измениться за его пределами.
 В класс с полем переменной и этим методом.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что ,если мы замкнем одну переменную в нескольких методах и начнём ее изменять?
 What if we close one variable in several methods and start changing it?
@@ -803,9 +798,9 @@ What if we close one variable in several methods and start changing it?
 `
 Компилятор создаст класс с полем переменной и этими методами, следовательно каждый метод будет изменять значение переменной, а другой будет получать уже измененное значение, как состояние объекта.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что делает оператор yield return, для чего нужен, во что его превратит компилятор?
 What does yield return operator do? What is it used for?
@@ -815,9 +810,9 @@ What does yield return operator do? What is it used for?
 Создаёт два класса, наследуемые от IEnumerable и IEnumerator. из метода возвращается класс соответствующий возвращаемому значению.
 В IEnumerator.Dispose(); закладывается финализатор (finnaly).
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что делает класс Lazy<T>?
 What does Lazy<T> class do?
@@ -826,9 +821,9 @@ What does Lazy<T> class do?
 `
 Создает экземпляр инкапсулируемого объекта T только при обращении к экземпляру Lazy<T>.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое отложенное выполнение, как реализуется в Linq?
 What is lazy loading, as implemented in Linq?
@@ -853,9 +848,9 @@ What is lazy loading, as implemented in Linq?
                     break;
             }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Как можно "завалить" отложенное выполнение в Linq?
 How can we "fail" lazy loading in Linq?
@@ -864,9 +859,9 @@ How can we "fail" lazy loading in Linq?
 `
 Методами Linq, которым нужен весь набор данных, например сортировка.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 На что влияет отложенное выполнение?
 What is affected by lazy loading?
@@ -875,9 +870,9 @@ What is affected by lazy loading?
 `
 Позволяет не запрашивать все данные исходного набора, пока в этом нет необходимости, следователно и обход набора уменьшается по количеству операций.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Расскажите об асинхронных стримах.
 Tell us obout asynchronous streams?
@@ -896,9 +891,9 @@ public static async IAsyncEnumerable<int> GetNumbersAsync()
     }
 }
 ```
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Разница между IEnumerable и IQueryable?
 What is difference between IEnumerable and IQueryable?
@@ -907,9 +902,9 @@ What is difference between IEnumerable and IQueryable?
 `
 Первый компилятор генрирует в обычный код, а второй в деревья выражений, который парсит постовщик методов расширения.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое деревья выражений, чем отличаются от делегатов? 
 What are expression trees? How do they differ from delegates?
@@ -918,9 +913,9 @@ What are expression trees? How do they differ from delegates?
 `
 Представлены классом Expression, позволяют парсить несложные запросы в синтаксис друго языка, делегаты относятся к исполняемому коду.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Чем отличается декларативный стиль написания кода от императивного?
 What is the difference between a declarativee style of writing code and an imperative style code?
@@ -929,9 +924,9 @@ What is the difference between a declarativee style of writing code and an imper
 `
 Декларативный код отвечает на вопрос "Что делать?", а императивный "Как сделать?".
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Зачем нужны атрибуты? 
 Why do I need attributes?
@@ -944,9 +939,9 @@ How do they work?
 С помощью рефлексии стандартные классы .NET получают использованные атрибуты и производят определенные действия. 
 Например, атрибут [Serializable] указывает классу BinaryFormatter, что объекты с данным атрибутом можно сохранять в бинарный файл.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Для чего нужны исключения, каков порядок их обработки?
 What are exceptions for?
@@ -958,18 +953,18 @@ What are exceptions for?
 то выполняется блок finally. В случае отстутствия необходимого для обработки блока catch программа аварийно завершится. Не стоит выбрасывать исключения в catch и finally. Так же исключение обрабатывается согласно
 иерархии наследования Exception
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Особенности вызова исключений в асинхронном коде?
 </summary>
 
 `
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Расскажите про GAC.
 Tell us about the GAC.
@@ -978,9 +973,9 @@ Tell us about the GAC.
 `
 Глобальный кеш сборок. Хранит разделяемые сборки для любых приложений. 
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое JIT-compiler?
 What is JIT-compiler.
@@ -992,9 +987,9 @@ How is the application compile?
 Just in time compiler, компилирует IL в ассемблерный код.
 Сначала проходит транслятор, транслирующий код в тот же C# код, но который может пройти уже компилятор в IL код.Во время запуска программы запускается JIT-компилятор.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Почему при запуске приложения первый вызов любого метода работает медленнее следующих?
 Why is the first call of any method slower than the next one when the app starts? 
@@ -1003,9 +998,9 @@ Why is the first call of any method slower than the next one when the app starts
 `
 После первой компиляции метода кода jit-компилятором он кешируется и уже не компилируется повторно. Поэтому последующие вызовы этих методов происходят быстрее.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Как на это можно повлиять?
 How can this be affected?
@@ -1014,9 +1009,9 @@ How can this be affected?
 `
 Можно пройти полную компиляцию программы (например специальной утилитой Ngen.exe), но это нужно делать под конкретное устройство, т к JIT подбирает оптимальные команды для текущего процессора.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое IL, зачем он нужен?
 What is IL? Why do i need it?
@@ -1026,9 +1021,9 @@ What is IL? Why do i need it?
 Все компиляторы, поддерживающие платформу .NET, должны транслировать код с языков высокого уровня платформы .NET на язык CIL. 
 Для написания одного приложения на разных ЯП.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Расскажите про JIT-оптимизации.
 Tell us about JIT optimization.
@@ -1037,9 +1032,9 @@ Tell us about JIT optimization.
 `
 Оптимизации кода, ускоряющие работу программ. Например оптимизация концевых вызовов. Может убрать лишние переменные или избавиться от упаковки привызове GetType() пользовательской структуры.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что делают инструкции unbox, callvirt, call, box, constrained? Какие отличия?
 What do the unbox, callvirt, call, box, constrained statments do?
@@ -1050,9 +1045,9 @@ callvirt вызывает метод объекта с передачей ссы
 box/unbox - упаковка/распаковка.
 constrained говорит о том, что вызовется call метод для значимого типа без упаковки, если метод структуры был переопределён.
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое анонимные типы? Как работают и для чего нужны?
 What are anonymous types? How work and what are they used for?
@@ -1060,15 +1055,15 @@ What are anonymous types? How work and what are they used for?
 
 `
 `
-</details></li>
+</details>
 
-<li><details>
+<details>
 <summary>
 Что такое O(n) ?
 What is O(n);
 Что такое:
 What is:
-<ol>
+<ul>
     <li>бинарный поиск (binary search)</li>
     <li>односвязный список (singly linked list)</li>
     <li>двусвязный список (multi-linked list)</li>
@@ -1080,10 +1075,9 @@ What is:
     <li>дерево (tree)</li>
     <li>стек (stack)</li>
     <li>np-полные задачи</li>
-</ol>
+</ul>
 </summary>
-
-<ol>
+<ul>
     <li>`Бинарный поиск - ускоренный поиск за O(log n), возможен при некоторых свойствах структуры данных, например при сортировке по номеру.
         Односвязный список - список, где каждый элемент знает о следующем элементе, но не знает о предыдущем.`</li>
     <li>`Двусвязный список - список, где каждый элемент знает о следующем элементе и предыдущем.`</li>
@@ -1095,6 +1089,5 @@ What is:
     <li>`Дерево — это связный ациклический граф.`</li>
     <li>`Очередь - первый вошел- первый вышел(FIFO).`</li>
     <li>`Стек - первый вошел- последний вышел(FILO).`</li>
-</ol>
-</details></li>
 </ul>
+</details>
