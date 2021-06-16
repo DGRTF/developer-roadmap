@@ -18,9 +18,9 @@ What types of polymorphism do you know?
 </summary>
 
 `
-Ad-hoc-полиморфизм(перегрузки)
-Параметрический полиморфизм (обобщения)
-Полиморфизм подтипов (наследование)
+Ad-hoc-полиморфизм(перегрузки).
+Параметрический полиморфизм (обобщения).
+Полиморфизм подтипов (наследование).
 `
 </details>
 
@@ -61,44 +61,6 @@ What is better use and when?
 `
 </details>
 
-```C#
-abstract class Human
-{
-    public string Name { get; }
-    public DateTime Born { get; }
-}
-
-class Employee : Human {}
-
-interface IAnimal<T> where T : Human
-{
-    DateTime Born { get; }
-    T Owner { get; }
-    int GetAge();
-}
-
-class Dog : IAnimal<Employee>
-{
-    public DateTime Born { get; private set; } = new DateTime(1996, 3, 24);
-    public Employee Owner { get; private set; }
-
-    public int GetAge()
-    {
-        return DateTime.Now.Year - Born.Year;
-    }
-
-    public int GetAge(DateTime dateTime)
-    {
-        if (dateTime < Born)
-        {
-            throw new ArgumentException("Неправильно задана дата отсчета");
-        }
-
-        return dateTime.Year - Born.Year;
-    }
-}
-```
-
 <details>
 <summary>
 Что такое внедрение зависимостей?
@@ -119,7 +81,7 @@ Why use interfaces and abstract classes?
 </summary>
 
 `
-Что бы внедрять их как зависимости и вместо них подставлять любой из подтипов, что обеспечивает переиспользуемость класса для любого из этих подтипов.
+Что бы агрегировать их как зависимости и вместо них подставлять любой из их подтипов, что обеспечивает переиспользуемость класса для любого из этих подтипов.
 `
 </details>
 
@@ -133,6 +95,68 @@ How do they differ in C#?
 Интерфейсы имеют множественное наследование.
 `
 </details>
+
+```C#
+interface IInterface {}
+interface IInterface1 {}
+
+// множественное наследование
+abstract class Human : IInterface, IInterface1
+{
+    public string Name { get; private set; }
+    public DateTime Born { get; private set; }
+}
+
+// Наследование, класс наследует два свойства от Human
+class Employee : Human {
+    public Employee(string name, DateTime born) {
+        Name = name;
+        Born = born;
+    }
+}
+
+// Параметрический полиморфизм (обобщения).
+interface IAnimal<T> where T : Human
+{
+    DateTime Born { get; }
+    T Owner { get; }
+    int GetAge();
+}
+
+// Полиморфизм подтипов (наследование).
+class Dog : IAnimal<Employee>
+{
+    // Инкапсуляция (данные и метод GetAge() для работы с ними)
+    public DateTime Born { get; private set; } = new DateTime(1996, 3, 24);
+    public Employee Owner { get; private set; }
+
+    // агрегация, частный случай ассоциации
+    public Dog(Human owner) {
+        Owner = owner;
+    }
+
+    public int GetAge()
+    {
+        return DateTime.Now.Year - Born.Year;
+    }
+
+    // Ad-hoc-полиморфизм(перегрузки)
+    public int GetAge(DateTime dateTime)
+    {
+        if (dateTime < Born)
+        {
+            throw new ArgumentException("Неправильно задана дата отсчета");
+        }
+
+        return dateTime.Year - Born.Year;
+    }
+
+    public Employee Get() {
+        // композиция, частный случай ассоциации
+        return new Employee("Name", new DateTime(1990, 5, 12))
+    }
+}
+```
 
 <details>
 <summary>
@@ -190,8 +214,8 @@ public static void Main()
 
 <details>
 <summary>
-Зачем вообще нужны классы, если можно использовать только методы (статические классы C#)?(???)
-Why do we need classes, if we can only use static classes methods?
+Зачем вообще нужны классы, если можно использовать только методы и данные статических классов C#?
+Why do we need classes, if we can only use static classes methods and data?
 </summary>
 
 `
@@ -219,21 +243,12 @@ What are the SOLID principles and what problem does each of them solve?
 <summary>
 Можно ли в js работать без классов и объектов? 
 Is it possible to work in js whithout classes and objects?
-</summary>
-
-`
-
-`
-</details>
-
-<details>
-<summary>
 Если да, то как?
 If so, how?
 </summary>
 
 `
-
+Да, используя замыкание.
 `
 </details>
 
@@ -595,8 +610,13 @@ That is covariance and contravariance generic types?
 </summary>
 
 `
-
+Ковариа́нтность и контравариа́нтность в программировании — способы переноса наследования типов на производные от них типы.
 `
+
+```C#
+delegate TResult Func<in T, out TResult>(T arg);
+public interface IComparable<in T> { ... }
+```
 </details>
 
 <details>
@@ -608,6 +628,13 @@ Why were genreric introduced?
 `
 Для безопасности типов и избегания упаковки и распаковки.
 `
+
+```C#
+var list = new List<int>();
+// компилятор будет ругаться на тип. отличный от int
+// упакоки значения не рпоизойдет
+list.Add(453);
+```
 </details>
 
 <details>
@@ -635,6 +662,11 @@ What is the generalization constraint?
 `
 Ограничивает входные типы интерфейсами, классами, наличием конструктора без параметра, cтруктурами.
 `
+
+```C#
+// На вход принимаются структуры
+public void Method<T>(T parameter) where T : struct
+```
 </details>
 
 <details>
@@ -984,7 +1016,7 @@ How can this be affected?
 </summary>
 
 `
-Можно пройти полную компиляцию программы специальной утилитой DASM.exe, но это нужно делать под конкретное устройство, т к JIT подбирает оптимальные команды для текущего процессора.
+Можно пройти полную компиляцию программы (например специальной утилитой Ngen.exe), но это нужно делать под конкретное устройство, т к JIT подбирает оптимальные команды для текущего процессора.
 `
 </details>
 
